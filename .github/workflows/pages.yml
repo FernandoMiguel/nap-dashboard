@@ -13,6 +13,8 @@ on:
     paths:
       - "dashboard.html"
       - "dashboard.png"
+      - "assets/grupo/**"
+      - "scripts/build_grupo.py"
       - ".github/workflows/pages.yml"
 
 permissions:
@@ -36,11 +38,12 @@ jobs:
           cp dashboard.html public/index.html
           cp dashboard.html public/dashboard.html
           cp dashboard.png public/dashboard.png
+          python3 scripts/build_grupo.py public
           echo "nap.ocarroeletrico.com" > public/CNAME
-          # Para os motores de busca: uma página só (/dashboard.html é a
-          # mesma, com canonical para /).
+          # Para os motores de busca: o dashboard e a página do grupo
+          # (/dashboard.html é o mesmo dashboard, com canonical para /).
           printf 'User-agent: *\nAllow: /\n\nSitemap: https://nap.ocarroeletrico.com/sitemap.xml\n' > public/robots.txt
-          printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://nap.ocarroeletrico.com/</loc><lastmod>%s</lastmod></url>\n</urlset>\n' "$(date -u +%F)" > public/sitemap.xml
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://nap.ocarroeletrico.com/</loc><lastmod>%s</lastmod></url>\n  <url><loc>https://nap.ocarroeletrico.com/grupo/</loc></url>\n  <url><loc>https://nap.ocarroeletrico.com/en/group/</loc></url>\n</urlset>\n' "$(date -u +%F)" > public/sitemap.xml
           # RFC 9116: a quem escrever sobre um problema de segurança (o mesmo
           # contacto do ohmigo e do CEME). Expires é obrigatório; conta 180
           # dias a partir deste deploy, e o refresh semanal faz um por semana.

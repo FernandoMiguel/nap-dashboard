@@ -15,10 +15,13 @@ produces CSVs + a self-contained dashboard (`dashboard.html`, `facts.md`,
   the dashboard helpers (`dashboard_payload.py`, `dashboard_i18n.py`); the
   anomalias agent's deterministic side (`anomalias_summary.py`,
   `anomalias_evidence.py`, `anomalias_check.py`, `format_anomalias.py`,
-  `check_agents.py`); and `ohmigo_dataset.py`. One-time migrations don't stay
+  `check_agents.py`); `ohmigo_dataset.py`; and `build_grupo.py` (the group
+  page, built by `pages.yml`). One-time migrations don't stay
   here once they've run: git keeps them.
 - `assets/` — `dashboard_template.html`, `pt_outline.json` (PT outline for the
-  map), `schemas/*.xsd` (DATEX II 3.3 © CEN; ver `assets/schemas/README.md`)
+  map), `schemas/*.xsd` (DATEX II 3.3 © CEN; ver `assets/schemas/README.md`),
+  `grupo/*.svg` (the group page's mascots: each site's own art, `pano.svg` is
+  the Panoramax logo)
 - `references/` — docs for the SKILL.md (data sources, gotchas)
 - `Agents/` — system prompts dos agentes automáticos (um `.md` por agente; ver
   `Agents/AGENTS.md`). Atual: `Agents/anomalias.md` (anomalias dos dados
@@ -403,7 +406,13 @@ Ao mover/renomear um ficheiro de dados, actualizar a lista `DATA_FILES` em
 - `Agents-outputs/anomalias-results.md` — output do agente `Agents/anomalias.md`
   (anomalias dos dados estáticos, agrupadas por OPC)
 - `/ohmigo/chargers.json` on Pages — the ohmigo dataset (Actions artifact, see
-  "ohmigo dataset"). `pages.yml` also publishes `robots.txt`, `sitemap.xml`
+  "ohmigo dataset").
+- `/grupo/` and `/en/group/` on Pages — the group page: the other sites of the
+  O Carro Elétrico group, each with its mascot, in the same order and with the
+  same texts as the page on ocarroeletrico.com (its `scripts/oce.py` is the
+  reference). Built by `scripts/build_grupo.py` (stdlib) in `pages.yml`, not
+  committed; the dashboard links to it under its title.
+  `pages.yml` also publishes `robots.txt`, `sitemap.xml`
   and `/.well-known/security.txt` (RFC 9116; `Expires` 180 days from each
   deploy).
 

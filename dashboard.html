@@ -97,7 +97,7 @@
   <h1 data-i18n="h1">Rede de carregamento de veículos elétricos — Portugal</h1>
   <div class="sub"><span data-i18n="sub1">NAP EADME (AFIR)</span> · snapshot <span id="snap"></span> · <a href="https://nap.ocarroeletrico.com/">nap.ocarroeletrico.com</a> · <a href="https://github.com/CarregaErvilhas/nap-dashboard" data-i18n="codeLink">código no GitHub</a></div>
   <p class="sub" data-i18n="intro">Todos os postos de carregamento públicos de Portugal, a partir do Ponto de Acesso Nacional (NAP): onde estão, se estão livres, que potência e tomadas têm, quem os opera e quanto cobra o operador (tarifa OPC da MOBI.E).</p>
-  <div class="sub"><span data-i18n="sisterLbl">Também d'O Carro Elétrico:</span> <a href="https://ohmigo.ocarroeletrico.com/" data-i18n="sisterOhmigo">ohmigo, o custo de carregar em cada posto, no ChatGPT e no Claude</a> · <a href="https://ceme.ocarroeletrico.com/" data-i18n="sisterCeme">comparador de tarifários CEME</a> · <a href="https://ocarroeletrico.com/">ocarroeletrico.com</a></div>
+  <div class="sub"><span data-i18n="sisterLbl">Também d'O Carro Elétrico:</span> <a href="https://ohmigo.ocarroeletrico.com/" data-i18n="sisterOhmigo">ohmigo, o custo de carregar em cada posto, no ChatGPT e no Claude</a> · <a href="https://ceme.ocarroeletrico.com/" data-i18n="sisterCeme">comparador de tarifários CEME</a> · <a href="https://ocarroeletrico.com/">ocarroeletrico.com</a> · <a id="groupLink" href="/grupo/" data-i18n="sisterGroup">todos os sites do grupo</a></div>
 
   <div class="cards" id="kpis"></div>
 
@@ -201,7 +201,7 @@ pt: {
   h1:'Rede de carregamento de veículos elétricos — Portugal',
   sub1:'NAP EADME (AFIR)', codeLink:'código no GitHub',
   intro:'Todos os postos de carregamento públicos de Portugal, a partir do Ponto de Acesso Nacional (NAP): onde estão, se estão livres, que potência e tomadas têm, quem os opera e quanto cobra o operador (tarifa OPC da MOBI.E).',
-  sisterLbl:'Também d\'O Carro Elétrico:', sisterOhmigo:'ohmigo, o custo de carregar em cada posto, no ChatGPT e no Claude', sisterCeme:'comparador de tarifários CEME',
+  sisterLbl:'Também d\'O Carro Elétrico:', sisterOhmigo:'ohmigo, o custo de carregar em cada posto, no ChatGPT e no Claude', sisterCeme:'comparador de tarifários CEME', sisterGroup:'todos os sites do grupo',
   secOverview:'Visão geral', secNews:'Novidades da semana', chStatus:'Pontos por estado (snapshot)', chRegion:'Locais por região',
   chPw:'Pontos por classe de potência', chConn:'Tipos de connector (tomadas)',
   secOperators:'Operadores', chOpSites:'Top 15 operadores — locais', chOpPts:'Top 15 operadores — pontos',
@@ -240,7 +240,7 @@ en: {
   h1:'Electric vehicle charging network — Portugal',
   sub1:'NAP EADME (AFIR)', codeLink:'code on GitHub',
   intro:'Every public EV charger in Portugal, from the National Access Point (NAP): where they are, whether they are free, their power and plugs, who runs them and what the operator charges (MOBI.E CPO fee).',
-  sisterLbl:'Also from O Carro Elétrico:', sisterOhmigo:'ohmigo, the cost of charging at each charger, in ChatGPT and Claude', sisterCeme:'CEME tariff comparison',
+  sisterLbl:'Also from O Carro Elétrico:', sisterOhmigo:'ohmigo, the cost of charging at each charger, in ChatGPT and Claude', sisterCeme:'CEME tariff comparison', sisterGroup:'all the group\'s sites',
   secOverview:'Overview', secNews:'Network news', chStatus:'Points by status (snapshot)', chRegion:'Sites by region',
   chPw:'Points by power class', chConn:'Connector types (outlets)',
   secOperators:'Operators', chOpSites:'Top 15 operators — sites', chOpPts:'Top 15 operators — points',
@@ -657,6 +657,7 @@ function setLang(l){
   LANG = (l==='en') ? 'en' : 'pt';
   try{ localStorage.setItem('nap-lang', LANG); }catch(e){}
   applyStatic();
+  document.getElementById('groupLink').href = LANG==='en' ? '/en/group/' : '/grupo/';
   renderKpis();
   renderBars();
   buildCols();
